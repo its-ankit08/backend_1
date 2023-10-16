@@ -1,0 +1,27 @@
+<% include ./partials/header.ejs %>
+
+    <div class="container py-3">
+      <h3>Create a new account.</h3>
+      <hr>
+      <form action="/register" method="post">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Email address</label>
+          <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Username</label>
+          <input name="username" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Password</label>
+          <input name="password" type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Age</label>
+          <input name="age" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Age">
+        </div>
+        <input type="submit" class="btn btn-primary" value="Create New Account">
+      </form>
+    </div>
+
+    <% include ./partials/footer.ejs %>

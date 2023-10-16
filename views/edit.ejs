@@ -1,0 +1,44 @@
+<% include ./partials/header.ejs %>
+
+  <div class="container py-3">
+    <h3>Update your account.</h3>
+    <hr>
+    <form action="/update" method="post">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+        <input disabled style="font-weight: 600;" name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email" value="<%= foundUser.email %>">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Username</label>
+        <input id="username" name="username" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username" value="<%= foundUser.username %>">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Age</label>
+        <input disabled name="age" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Age" value="<%= foundUser.age %>">
+      </div>
+      <input id="submit" type="submit" class="btn btn-warning" value="Update Your Account">
+    </form>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js" integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    var username = document.querySelector("#username");
+
+    username.addEventListener("input", function(){
+      if(username.value.length > 0){
+        axios.get(`/check/${username.value}`)
+        .then(function(data){
+          if(data.data){
+            username.style.boxShadow = "0 0 0 0.25rem rgba(255,50,50,.7)";
+            document.querySelector('#submit').setAttribute("disabled", true);
+          }
+          else{
+            username.style.boxShadow = "0 0 0 0.25rem rgba(13,110,253,.25)";
+            document.querySelector('#submit').removeAttribute("disabled");
+          }
+        })
+      }
+    })
+  </script>
+
+  <% include ./partials/footer.ejs %>
